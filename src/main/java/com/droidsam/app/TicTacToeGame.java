@@ -1,31 +1,30 @@
 package com.droidsam.app;
 
 import java.security.InvalidParameterException;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class TicTacToeGame {
 
-    final Player[][] squares;
-    int marks = 0;
-    private Player lasPlayer;
+    final PlayerMark[][] squares;
+    private PlayerMark lasPlayer;
 
     public TicTacToeGame() {
-        squares = new Player[3][3];
+        squares = new PlayerMark[3][3];
     }
 
     public boolean isBoardEmpty() {
-        return marks == 0;
+        return Arrays.stream(squares).allMatch(row -> Arrays.stream(row).allMatch(Objects::isNull));
     }
 
-    public void place(Player player, int x, int y) {
+    public void place(PlayerMark player, int x, int y) {
         enforcePlayerMoveRules(player, x, y);
 
         lasPlayer = player;
         squares[x][y] = player;
-
-        marks++;
     }
 
-    private void enforcePlayerMoveRules(Player player, int x, int y) {
+    private void enforcePlayerMoveRules(PlayerMark player, int x, int y) {
         playerXAlwaysStartTheGame(player);
         playersMustAlternate(player);
         squaresCanNotPlayedAgain(x, y);
@@ -37,14 +36,14 @@ public class TicTacToeGame {
         }
     }
 
-    private void playersMustAlternate(Player player) {
+    private void playersMustAlternate(PlayerMark player) {
         if (player == lasPlayer) {
             throw new InvalidParameterException("Players alternate placing marks on the board");
         }
     }
 
-    private void playerXAlwaysStartTheGame(Player player) {
-        if (marks == 0 && Player.X != player) {
+    private void playerXAlwaysStartTheGame(PlayerMark player) {
+        if (isBoardEmpty() && PlayerMark.X != player) {
             throw new InvalidParameterException("Player X always goes first");
         }
     }

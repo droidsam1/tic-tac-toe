@@ -23,32 +23,32 @@ public class TicTacToeGameTest {
 
     @Test
     public void shouldPlayerXStartTheGame() {
-        game.place(Player.X, 1, 1);
+        game.place(PlayerMark.X, 1, 1);
         assertFalse(game.isBoardEmpty());
     }
 
     @Test
     public void shouldPlayerXAlwaysStartTheGameBeEnforced() {
-        assertThrows(InvalidParameterException.class, () -> game.place(Player.O, 1, 1));
+        assertThrows(InvalidParameterException.class, () -> game.place(PlayerMark.O, 1, 1));
     }
 
     @Test
     public void shouldPlayersAlternatePlacingMarksOnTheBoard() {
-        game.place(Player.X, 1, 1);
-        game.place(Player.O, 1, 2);
+        game.place(PlayerMark.X, 1, 1);
+        game.place(PlayerMark.O, 1, 2);
         assertFalse(game.isBoardEmpty());
     }
 
     @Test
     public void shouldPlayersAlternatePlacingMarksOnTheBoardBeEnforced() {
-        game.place(Player.X, 1, 1);
-        assertThrows(InvalidParameterException.class, () -> game.place(Player.X, 1, 2));
+        game.place(PlayerMark.X, 1, 1);
+        assertThrows(InvalidParameterException.class, () -> game.place(PlayerMark.X, 1, 2));
     }
 
     @Test
     public void shouldPlayersCanNotPlaceOverSquaresAlreadyBeenPlayed(){
-        game.place(Player.X, 1, 1);
-        assertThrows(InvalidParameterException.class, () -> game.place(Player.O, 1, 1));
+        game.place(PlayerMark.X, 1, 1);
+        assertThrows(InvalidParameterException.class, () -> game.place(PlayerMark.O, 1, 1));
     }
 
 }
