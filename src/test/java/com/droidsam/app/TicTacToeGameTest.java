@@ -16,14 +16,14 @@ public class TicTacToeGameTest {
     @Test
     public void shouldPlayerXStartTheGame() {
         var game = new TicTacToeGame();
-        game.place('X', 1, 1);
+        game.place(Player.X, 1, 1);
         assertFalse(game.isGridEmpty());
     }
 
     @Test
     public void shouldPlayerXAlwaysStartTheGameBeEnforced() {
         var game = new TicTacToeGame();
-        assertThrows(InvalidParameterException.class, () -> game.place('O', 1, 1));
+        assertThrows(InvalidParameterException.class, () -> game.place(Player.O, 1, 1));
     }
 
 }
