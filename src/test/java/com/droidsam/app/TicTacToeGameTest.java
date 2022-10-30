@@ -2,8 +2,12 @@ package com.droidsam.app;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.security.InvalidParameterException;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,9 +50,24 @@ public class TicTacToeGameTest {
     }
 
     @Test
-    public void shouldPlayersCanNotPlaceOverSquaresAlreadyBeenPlayed(){
+    public void shouldPlayersCanNotPlaceOverSquaresAlreadyBeenPlayed() {
         game.place(PlayerMark.X, 1, 1);
         assertThrows(InvalidParameterException.class, () -> game.place(PlayerMark.O, 1, 1));
+    }
+
+    @ParameterizedTest
+    @MethodSource("invalidCoordinates")
+    public void shouldPlayerPlaceMarksWithinTheLimitsOfTheBoard(int x, int y) {
+        assertThrows(IndexOutOfBoundsException.class, () -> game.place(PlayerMark.X, x, y));
+    }
+
+    private static Stream<Arguments> invalidCoordinates(){
+        return Stream.of(
+                Arguments.of(-1,1),
+                Arguments.of(3, 1),
+                Arguments.of(1, -1),
+                Arguments.of(1, 3)
+        );
     }
 
 }
