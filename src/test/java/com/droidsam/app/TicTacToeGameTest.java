@@ -45,4 +45,10 @@ public class TicTacToeGameTest {
         assertThrows(InvalidParameterException.class, () -> game.place(Player.X, 1, 2));
     }
 
+    @Test
+    public void shouldPlayersCanNotPlaceOverSquaresAlreadyBeenPlayed(){
+        game.place(Player.X, 1, 1);
+        assertThrows(InvalidParameterException.class, () -> game.place(Player.O, 1, 1));
+    }
+
 }
