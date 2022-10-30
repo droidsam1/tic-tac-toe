@@ -60,6 +60,15 @@ public class TicTacToeGameTest {
     }
 
     @Test
+    public void shouldOnlyPlayersCanWinWhenPutsAtLeastThreeMarks() {
+        game.place(PlayerMark.X, 0, 0);
+        game.place(PlayerMark.O, 1, 1);
+        game.place(PlayerMark.X, 0, 1);
+        game.place(PlayerMark.O, 1, 2);
+        assertEquals(PlayerMark.NONE, game.getWinner());
+    }
+
+    @Test
     public void shouldPlayerWithThreeMarksInARowWinsTheGame() {
         game.place(PlayerMark.X, 0, 0);
         game.place(PlayerMark.O, 1, 1);

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Board {
 
-    final PlayerMark[][] squares;
+    private final PlayerMark[][] squares;
 
     public Board() {
         squares = new PlayerMark[3][3];
@@ -22,9 +22,9 @@ public class Board {
     }
 
     private void placeMark(PlayerMark player, int x, int y) {
-        try{
+        try {
             squares[x][y] = player;
-        }catch (IndexOutOfBoundsException ex){
+        } catch (IndexOutOfBoundsException ex) {
             throw new IndexOutOfBoundsException("Can not place marks outside board limits. Valid range goes from 0 to 2");
         }
     }
@@ -33,5 +33,21 @@ public class Board {
         if (squares[x][y] != null) {
             throw new InvalidParameterException("Can not place over squares that has already been played");
         }
+    }
+
+    public long getMarksPerColumRow(PlayerMark player) {
+        int result = 0;
+        for (int i = 0; i < squares[0].length; i++) {
+            int count = 0;
+            for (int x = 0; x < squares[i].length; x++) {
+                if (squares[i][x] == player) {
+                    count++;
+                }
+            }
+            if (count > result) {
+                result = count;
+            }
+        }
+        return result;
     }
 }

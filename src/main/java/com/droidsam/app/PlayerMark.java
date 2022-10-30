@@ -1,5 +1,5 @@
 package com.droidsam.app;
 
 public enum PlayerMark {
-    X, O
+    X, NONE, O
 }

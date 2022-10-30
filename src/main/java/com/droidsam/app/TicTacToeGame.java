@@ -40,6 +40,9 @@ public class TicTacToeGame {
     }
 
     public PlayerMark getWinner() {
-        return PlayerMark.X;
+        if (board.getMarksPerColumRow(PlayerMark.X) == 3) {
+            return PlayerMark.X;
+        }
+        return PlayerMark.NONE;
     }
 }
