@@ -2,8 +2,9 @@ package com.droidsam.app;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.security.InvalidParameterException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TicTacToeGameTest {
 
@@ -17,6 +18,12 @@ public class TicTacToeGameTest {
         var game = new TicTacToeGame();
         game.place('X', 1, 1);
         assertFalse(game.isGridEmpty());
+    }
+
+    @Test
+    public void shouldPlayerXAlwaysStartTheGameBeEnforced() {
+        var game = new TicTacToeGame();
+        assertThrows(InvalidParameterException.class, () -> game.place('O', 1, 1));
     }
 
 }

@@ -1,5 +1,7 @@
 package com.droidsam.app;
 
+import java.security.InvalidParameterException;
+
 public class TicTacToeGame {
 
     int marks = 0;
@@ -9,6 +11,9 @@ public class TicTacToeGame {
     }
 
     public void place(char player, int x, int y) {
+        if (marks == 0 && 'O' == player) {
+            throw new InvalidParameterException("Player X always goes first");
+        }
         marks++;
 
     }
