@@ -90,13 +90,24 @@ public class TicTacToeGameTest {
     }
 
     @Test
-    public void shouldPlayerWithThreeMarksInAColumnWinsTheGame() {
+    public void shouldPlayerXWithThreeMarksInAColumnWinsTheGame() {
         game.place(PlayerMark.X, 0, 1);
         game.place(PlayerMark.O, 0, 0);
         game.place(PlayerMark.X, 1, 1);
         game.place(PlayerMark.O, 0, 2);
         game.place(PlayerMark.X, 2, 1);
         assertEquals(PlayerMark.X, game.getWinner());
+    }
+
+    @Test
+    public void shouldPlayerOWithThreeMarksInAColumnWinsTheGame() {
+        game.place(PlayerMark.X, 0, 2);
+        game.place(PlayerMark.O, 0, 1);
+        game.place(PlayerMark.X, 2, 2);
+        game.place(PlayerMark.O, 1, 1);
+        game.place(PlayerMark.X, 1, 0);
+        game.place(PlayerMark.O, 2, 1);
+        assertEquals(PlayerMark.O, game.getWinner());
     }
 
     @Test
