@@ -12,16 +12,16 @@ public class Board {
         squares = new PlayerMark[3][3];
     }
 
-    public boolean isBoardEmpty() {
+    public boolean isEmpty() {
         return Arrays.stream(squares).allMatch(row -> Arrays.stream(row).allMatch(Objects::isNull));
     }
 
     public void place(PlayerMark player, int x, int y) {
-        squaresCanNotPlayedAgain(x, y);
+        squaresCanNotBePlayedAgain(x, y);
         squares[x][y] = player;
     }
 
-    private void squaresCanNotPlayedAgain(int x, int y) {
+    private void squaresCanNotBePlayedAgain(int x, int y) {
         if (squares[x][y] != null) {
             throw new InvalidParameterException("Can not place over squares that has already been played");
         }

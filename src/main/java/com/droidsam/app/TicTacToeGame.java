@@ -12,7 +12,7 @@ public class TicTacToeGame {
     }
 
     public boolean isBoardEmpty() {
-        return board.isBoardEmpty();
+        return board.isEmpty();
     }
 
     public void place(PlayerMark player, int x, int y) {
