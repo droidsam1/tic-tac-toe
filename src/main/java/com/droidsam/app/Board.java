@@ -16,6 +16,10 @@ public class Board {
         return Arrays.stream(squares).allMatch(row -> Arrays.stream(row).allMatch(Objects::isNull));
     }
 
+    public boolean isFull() {
+        return Arrays.stream(squares).allMatch(row -> Arrays.stream(row).allMatch(Objects::nonNull));
+    }
+
     public void place(PlayerMark player, int x, int y) {
         squaresCanNotBePlayedAgain(x, y);
         placeMark(player, x, y);

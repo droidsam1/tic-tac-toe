@@ -25,7 +25,11 @@ public class TicTacToeGame {
     private void enforcePlayerMoveRules(PlayerMark player, int x, int y) {
         playerXAlwaysStartTheGame(player);
         playersMustAlternate(player);
-        if (getWinner() != PlayerMark.NONE) {
+        playersCanNotKeepPlayingIfThereIsAWinner();
+    }
+
+    private void playersCanNotKeepPlayingIfThereIsAWinner() {
+        if (thereIsAWinner()) {
             throw new IllegalStateException("Can not continue playing when a player has already won the game");
         }
     }
@@ -43,21 +47,19 @@ public class TicTacToeGame {
     }
 
     public PlayerMark getWinner() {
-
         for (PlayerMark player : PlayerMark.values()) {
             if (board.getMarksPerRow(player) == 3 || board.getMarksPerColumn(player) == 3 || board.getMarksPerDiagonal(player) == 3) {
                 return player;
             }
         }
-
         return PlayerMark.NONE;
     }
 
-    public boolean isADraw() {
-        return getWinner() == PlayerMark.NONE;
+    private boolean thereIsAWinner() {
+        return getWinner() != PlayerMark.NONE;
     }
 
-//    private enum STATUS {
-//        ENDED, DRAW, RUNNING
-//    }
+    public boolean isADraw() {
+        return board.isFull() && !thereIsAWinner();
+    }
 }
