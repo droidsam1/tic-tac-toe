@@ -25,6 +25,9 @@ public class TicTacToeGame {
     private void enforcePlayerMoveRules(PlayerMark player, int x, int y) {
         playerXAlwaysStartTheGame(player);
         playersMustAlternate(player);
+        if (getWinner() != PlayerMark.NONE) {
+            throw new IllegalStateException("Can not continue playing when a player has already won the game");
+        }
     }
 
     private void playersMustAlternate(PlayerMark player) {

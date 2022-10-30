@@ -152,6 +152,18 @@ public class TicTacToeGameTest {
         assertTrue(game.isADraw());
     }
 
+    @Test
+    public void shouldPlayerCanNotKeepPlayingIfAPlayerHasWon() {
+        game.place(PlayerMark.X, 0, 0);
+        game.place(PlayerMark.O, 1, 1);
+        game.place(PlayerMark.X, 0, 1);
+        game.place(PlayerMark.O, 1, 2);
+        game.place(PlayerMark.X, 0, 2);
+        assertEquals(PlayerMark.X, game.getWinner());
+
+        assertThrows(IllegalStateException.class, () -> game.place(PlayerMark.O, 1, 0));
+    }
+
     @ParameterizedTest
     @MethodSource("invalidCoordinates")
     public void shouldPlayerPlaceMarksWithinTheLimitsOfTheBoard(int x, int y) {
