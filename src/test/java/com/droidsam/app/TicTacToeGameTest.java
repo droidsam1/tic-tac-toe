@@ -76,6 +76,7 @@ public class TicTacToeGameTest {
         game.place(PlayerMark.O, 1, 2);
         game.place(PlayerMark.X, 0, 2);
         assertEquals(PlayerMark.X, game.getWinner());
+        assertFalse(game.isADraw());
     }
 
     @Test
@@ -87,6 +88,7 @@ public class TicTacToeGameTest {
         game.place(PlayerMark.X, 2, 2);
         game.place(PlayerMark.O, 0, 2);
         assertEquals(PlayerMark.O, game.getWinner());
+        assertFalse(game.isADraw());
     }
 
     @Test
@@ -97,6 +99,7 @@ public class TicTacToeGameTest {
         game.place(PlayerMark.O, 0, 2);
         game.place(PlayerMark.X, 2, 1);
         assertEquals(PlayerMark.X, game.getWinner());
+        assertFalse(game.isADraw());
     }
 
     @Test
@@ -108,6 +111,7 @@ public class TicTacToeGameTest {
         game.place(PlayerMark.X, 1, 0);
         game.place(PlayerMark.O, 2, 1);
         assertEquals(PlayerMark.O, game.getWinner());
+        assertFalse(game.isADraw());
     }
 
     @Test
@@ -118,6 +122,7 @@ public class TicTacToeGameTest {
         game.place(PlayerMark.O, 0, 2);
         game.place(PlayerMark.X, 2, 2);
         assertEquals(PlayerMark.X, game.getWinner());
+        assertFalse(game.isADraw());
     }
 
     @Test
@@ -129,6 +134,7 @@ public class TicTacToeGameTest {
         game.place(PlayerMark.X, 0, 2);
         game.place(PlayerMark.O, 2, 2);
         assertEquals(PlayerMark.O, game.getWinner());
+        assertFalse(game.isADraw());
     }
 
     @Test

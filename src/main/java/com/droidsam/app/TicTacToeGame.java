@@ -51,7 +51,7 @@ public class TicTacToeGame {
     }
 
     public boolean isADraw() {
-        return true;
+        return getWinner() == PlayerMark.NONE;
     }
 
 //    private enum STATUS {
