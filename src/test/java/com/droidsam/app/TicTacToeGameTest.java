@@ -33,10 +33,16 @@ public class TicTacToeGameTest {
     }
 
     @Test
-    public void shouldPlayersAlternatePlacingMarksOnTheBoard(){
+    public void shouldPlayersAlternatePlacingMarksOnTheBoard() {
         game.place(Player.X, 1, 1);
         game.place(Player.O, 1, 2);
         assertFalse(game.isGridEmpty());
+    }
+
+    @Test
+    public void shouldPlayersAlternatePlacingMarksOnTheBoardBeEnforced() {
+        game.place(Player.X, 1, 1);
+        assertThrows(InvalidParameterException.class, () -> game.place(Player.X, 1, 2));
     }
 
 }
