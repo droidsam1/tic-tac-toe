@@ -40,10 +40,13 @@ public class TicTacToeGame {
     }
 
     public PlayerMark getWinner() {
-        if (board.getMarksPerRow(PlayerMark.X) == 3 || board.getMarksPerColumn(PlayerMark.X) == 3
-        || board.getMarksPerDiagonal(PlayerMark.X) == 3) {
-            return PlayerMark.X;
+
+        for (PlayerMark player : PlayerMark.values()) {
+            if (board.getMarksPerRow(player) == 3 || board.getMarksPerColumn(player) == 3 || board.getMarksPerDiagonal(player) == 3) {
+                return player;
+            }
         }
+
         return PlayerMark.NONE;
     }
 }
