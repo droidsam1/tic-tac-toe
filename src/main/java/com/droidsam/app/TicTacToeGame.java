@@ -7,14 +7,16 @@ import java.util.Objects;
 public class TicTacToeGame {
 
     final PlayerMark[][] squares;
+    final Board board;
     private PlayerMark lasPlayer;
 
     public TicTacToeGame() {
         squares = new PlayerMark[3][3];
+        board = new Board();
     }
 
     public boolean isBoardEmpty() {
-        return Arrays.stream(squares).allMatch(row -> Arrays.stream(row).allMatch(Objects::isNull));
+        return board.isBoardEmpty();
     }
 
     public void place(PlayerMark player, int x, int y) {
@@ -22,6 +24,7 @@ public class TicTacToeGame {
 
         lasPlayer = player;
         squares[x][y] = player;
+        board.place(player, x, y);
     }
 
     private void enforcePlayerMoveRules(PlayerMark player, int x, int y) {
