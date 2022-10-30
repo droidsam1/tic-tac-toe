@@ -86,7 +86,7 @@ public class TicTacToeGameTest {
         game.place(PlayerMark.O, 0, 1);
         game.place(PlayerMark.X, 2, 2);
         game.place(PlayerMark.O, 0, 2);
-        assertEquals(PlayerMark.O,game.getWinner());
+        assertEquals(PlayerMark.O, game.getWinner());
     }
 
     @Test
@@ -111,13 +111,24 @@ public class TicTacToeGameTest {
     }
 
     @Test
-    public void shouldPlayerWithThreeMarksInADiagonalWinsTheGame() {
+    public void shouldPlayerXWithThreeMarksInADiagonalWinsTheGame() {
         game.place(PlayerMark.X, 0, 0);
         game.place(PlayerMark.O, 0, 1);
         game.place(PlayerMark.X, 1, 1);
         game.place(PlayerMark.O, 0, 2);
         game.place(PlayerMark.X, 2, 2);
         assertEquals(PlayerMark.X, game.getWinner());
+    }
+
+    @Test
+    public void shouldPlayerOWithThreeMarksInADiagonalWinsTheGame() {
+        game.place(PlayerMark.X, 2, 0);
+        game.place(PlayerMark.O, 0, 0);
+        game.place(PlayerMark.X, 0, 1);
+        game.place(PlayerMark.O, 1, 1);
+        game.place(PlayerMark.X, 0, 2);
+        game.place(PlayerMark.O, 2, 2);
+        assertEquals(PlayerMark.O, game.getWinner());
     }
 
     @ParameterizedTest
