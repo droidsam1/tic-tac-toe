@@ -131,6 +131,21 @@ public class TicTacToeGameTest {
         assertEquals(PlayerMark.O, game.getWinner());
     }
 
+    @Test
+    public void shouldGameBeADrawWhenAllSquaresAreFilledAndNoPlayerHasWon() {
+        game.place(PlayerMark.X, 0, 0);
+        game.place(PlayerMark.O, 0, 1);
+        game.place(PlayerMark.X, 0, 2);
+        game.place(PlayerMark.O, 1, 0);
+        game.place(PlayerMark.X, 1, 2);
+        game.place(PlayerMark.O, 1, 1);
+        game.place(PlayerMark.X, 2, 1);
+        game.place(PlayerMark.O, 2, 2);
+        game.place(PlayerMark.X, 2, 0);
+        assertEquals(PlayerMark.NONE, game.getWinner());
+        assertTrue(game.isADraw());
+    }
+
     @ParameterizedTest
     @MethodSource("invalidCoordinates")
     public void shouldPlayerPlaceMarksWithinTheLimitsOfTheBoard(int x, int y) {

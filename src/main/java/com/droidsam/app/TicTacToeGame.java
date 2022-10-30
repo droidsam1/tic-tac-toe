@@ -49,4 +49,12 @@ public class TicTacToeGame {
 
         return PlayerMark.NONE;
     }
+
+    public boolean isADraw() {
+        return true;
+    }
+
+//    private enum STATUS {
+//        ENDED, DRAW, RUNNING
+//    }
 }
