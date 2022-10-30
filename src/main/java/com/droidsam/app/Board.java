@@ -35,7 +35,7 @@ public class Board {
         }
     }
 
-    public long getMarksPerColumRow(PlayerMark player) {
+    public long getMarksPerRow(PlayerMark player) {
         int result = 0;
         for (int i = 0; i < squares[0].length; i++) {
             int count = 0;
@@ -51,7 +51,7 @@ public class Board {
         return result;
     }
 
-    public long getMarksPerColumColumn(PlayerMark player) {
+    public long getMarksPerColumn(PlayerMark player) {
         int result = 0;
         for (int i = 0; i < squares[0].length; i++) {
             int count = 0;
