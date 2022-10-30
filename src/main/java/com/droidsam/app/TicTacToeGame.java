@@ -7,7 +7,7 @@ public class TicTacToeGame {
     int marks = 0;
     private Player lasPlayer;
 
-    public boolean isGridEmpty() {
+    public boolean isBoardEmpty() {
         return marks == 0;
     }
 

@@ -17,14 +17,14 @@ public class TicTacToeGameTest {
     }
 
     @Test
-    public void shouldStartWithEmptyGrid() {
-        assertTrue(game.isGridEmpty());
+    public void shouldStartWithEmptyBoard() {
+        assertTrue(game.isBoardEmpty());
     }
 
     @Test
     public void shouldPlayerXStartTheGame() {
         game.place(Player.X, 1, 1);
-        assertFalse(game.isGridEmpty());
+        assertFalse(game.isBoardEmpty());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class TicTacToeGameTest {
     public void shouldPlayersAlternatePlacingMarksOnTheBoard() {
         game.place(Player.X, 1, 1);
         game.place(Player.O, 1, 2);
-        assertFalse(game.isGridEmpty());
+        assertFalse(game.isBoardEmpty());
     }
 
     @Test
