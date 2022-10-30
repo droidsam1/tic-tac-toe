@@ -50,4 +50,20 @@ public class Board {
         }
         return result;
     }
+
+    public long getMarksPerColumColumn(PlayerMark player) {
+        int result = 0;
+        for (int i = 0; i < squares[0].length; i++) {
+            int count = 0;
+            for (int x = 0; x < squares[i].length; x++) {
+                if (squares[x][i] == player) {
+                    count++;
+                }
+            }
+            if (count > result) {
+                result = count;
+            }
+        }
+        return result;
+    }
 }
