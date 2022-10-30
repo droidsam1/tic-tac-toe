@@ -88,6 +88,16 @@ public class TicTacToeGameTest {
         assertEquals(PlayerMark.X, game.getWinner());
     }
 
+    @Test
+    public void shouldPlayerWithThreeMarksInADiagonalWinsTheGame() {
+        game.place(PlayerMark.X, 0, 0);
+        game.place(PlayerMark.O, 0, 1);
+        game.place(PlayerMark.X, 1, 1);
+        game.place(PlayerMark.O, 0, 2);
+        game.place(PlayerMark.X, 2, 2);
+        assertEquals(PlayerMark.X, game.getWinner());
+    }
+
     @ParameterizedTest
     @MethodSource("invalidCoordinates")
     public void shouldPlayerPlaceMarksWithinTheLimitsOfTheBoard(int x, int y) {

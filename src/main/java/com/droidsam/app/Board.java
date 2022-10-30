@@ -66,4 +66,14 @@ public class Board {
         }
         return result;
     }
+
+    public long getMarksPerDiagonal(PlayerMark player) {
+        int result = 0;
+        for (int i = 0; i < squares[0].length; i++) {
+            if (squares[i][i] == player) {
+                result++;
+            }
+        }
+        return result;
+    }
 }
