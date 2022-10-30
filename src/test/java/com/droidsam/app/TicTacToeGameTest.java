@@ -32,4 +32,11 @@ public class TicTacToeGameTest {
         assertThrows(InvalidParameterException.class, () -> game.place(Player.O, 1, 1));
     }
 
+    @Test
+    public void shouldPlayersAlternatePlacingMarksOnTheBoard(){
+        game.place(Player.X, 1, 1);
+        game.place(Player.O, 1, 2);
+        assertFalse(game.isGridEmpty());
+    }
+
 }
