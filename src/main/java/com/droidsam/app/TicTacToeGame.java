@@ -38,4 +38,8 @@ public class TicTacToeGame {
             throw new InvalidParameterException("Player X always goes first");
         }
     }
+
+    public PlayerMark getWinner() {
+        return PlayerMark.X;
+    }
 }

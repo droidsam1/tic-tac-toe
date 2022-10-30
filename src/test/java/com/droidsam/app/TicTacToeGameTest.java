@@ -15,6 +15,10 @@ public class TicTacToeGameTest {
 
     private TicTacToeGame game;
 
+    private static Stream<Arguments> invalidCoordinates() {
+        return Stream.of(Arguments.of(-1, 1), Arguments.of(3, 1), Arguments.of(1, -1), Arguments.of(1, 3));
+    }
+
     @BeforeEach
     public void setup() {
         game = new TicTacToeGame();
@@ -55,19 +59,20 @@ public class TicTacToeGameTest {
         assertThrows(InvalidParameterException.class, () -> game.place(PlayerMark.O, 1, 1));
     }
 
+    @Test
+    public void shouldPlayerWithThreeMarksInARowWinsTheGame() {
+        game.place(PlayerMark.X, 0, 0);
+        game.place(PlayerMark.O, 1, 1);
+        game.place(PlayerMark.X, 0, 1);
+        game.place(PlayerMark.O, 1, 2);
+        game.place(PlayerMark.X, 0, 2);
+        assertEquals(PlayerMark.X, game.getWinner());
+    }
+
     @ParameterizedTest
     @MethodSource("invalidCoordinates")
     public void shouldPlayerPlaceMarksWithinTheLimitsOfTheBoard(int x, int y) {
         assertThrows(IndexOutOfBoundsException.class, () -> game.place(PlayerMark.X, x, y));
-    }
-
-    private static Stream<Arguments> invalidCoordinates(){
-        return Stream.of(
-                Arguments.of(-1,1),
-                Arguments.of(3, 1),
-                Arguments.of(1, -1),
-                Arguments.of(1, 3)
-        );
     }
 
 }
